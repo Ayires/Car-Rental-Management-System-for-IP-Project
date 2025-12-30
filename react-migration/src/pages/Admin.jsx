@@ -15,6 +15,12 @@ const Admin = () => {
     const booking = bookings.find(b => b.id === bookingId);
     if (!booking) return;
 
+    const car = cars.find(c => c.id === booking.carId);
+    if (car && car.status === 'available') {
+      alert(`This car (${car.brand} ${car.model}) is already available. No changes needed.`);
+      return;
+    }
+
     const updatedBookings = bookings.map(b => 
       b.id === bookingId ? { ...b, status: 'returned' } : b
     );

@@ -44,7 +44,7 @@
                         <a class="nav-link" href="bookings.html">My Bookings</a>
                     </li>
                     <!-- Wallet Display -->
-                    <li class="nav-item">
+                    <li class="nav-item wallet-ui">
                         <a class="nav-link wallet-badge" href="#" id="rechargeWalletBtn">
                             <i class="fas fa-wallet"></i>
                             <span class="d-none d-md-inline">Br<span id="walletBadge">500.00</span></span>
@@ -56,6 +56,11 @@
                             <i class="fas fa-user me-1"></i>
                             <span id="userName">User</span>
                         </span>
+                    </li>
+                    <li class="nav-item" id="adminDashboardLink" style="display: none;">
+                        <a class="nav-link admin-link" href="admin.html">
+                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                        </a>
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
@@ -75,13 +80,13 @@
                     <h1 class="display-4 fw-bold mb-4">Rent Your Perfect Car Today</h1>
                     <p class="lead mb-4">Choose from a wide selection of vehicles at competitive prices. Whether for business or leisure, we have the right car for you.</p>
                     <!-- Wallet Balance in Hero -->
-                    <div class="alert alert-success d-inline-block">
+                    <div class="alert alert-success d-inline-block wallet-ui">
                         <i class="fas fa-wallet me-2"></i>
                         <strong>Wallet Balance:</strong> Br<span id="walletBalanceHero">500.00</span>
                     </div>
                     <div class="mt-3">
                         <a href="cars.html" class="btn btn-primary btn-lg me-2">Browse Cars <i class="fas fa-arrow-right ms-2"></i></a>
-                        <button class="btn btn-success btn-lg" id="rechargeWalletBtnHero">
+                        <button class="btn btn-success btn-lg wallet-ui" id="rechargeWalletBtnHero">
                             <i class="fas fa-plus-circle me-2"></i>Recharge Wallet
                         </button>
                     </div>

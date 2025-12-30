@@ -40,11 +40,17 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="booking.html">Book Now</a>
                     </li>
+                    <!-- Admin Link -->
+                    <li class="nav-item">
+                        <a class="nav-link admin-link" href="admin.html" id="adminDashboardLink" style="display: none;">
+                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="bookings.html">My Bookings</a>
                     </li>
                     <!-- Wallet Badge moved to separate link -->
-                    <li class="nav-item">
+                    <li class="nav-item wallet-ui">
                         <a class="nav-link wallet-badge" href="#" id="rechargeWalletBtn">
                             <i class="fas fa-wallet"></i>
                             <span class="d-none d-md-inline">Br<span id="walletBadge">0.00</span></span>
@@ -73,7 +79,7 @@
             <h1>Book Your Ride</h1>
             <p class="lead">Complete the form below to book your selected car.</p>
             
-            <div class="mt-3">
+            <div class="mt-3 wallet-ui">
                 <div class="alert alert-light d-inline-block py-2">
                     <i class="fas fa-wallet me-2 text-primary"></i>
                     <strong class="text-primary">Wallet Balance:</strong> <span class="text-dark">Br<span id="walletBalance">0.00</span></span>

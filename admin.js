@@ -378,16 +378,6 @@ function setupAdminEventListeners() {
         cancelBookingBtn.addEventListener('click', cancelBooking);
     }
     
-    // Refresh bookings button
-    const refreshBookingsBtn = document.getElementById('refresh-bookings-btn');
-    if (refreshBookingsBtn) {
-        refreshBookingsBtn.addEventListener('click', function() {
-            loadAdminBookings();
-            updateDashboardStats();
-            alert('Bookings refreshed!');
-        });
-    }
-    
     // Logout button
     const logoutBtn = document.getElementById('btnLogout');
     if (logoutBtn) {
@@ -709,6 +699,11 @@ function markBookingAsReturned() {
     const cars = getCars();
     const carIndex = cars.findIndex(c => c.id === carId);
     if (carIndex !== -1) {
+        // Check if car is already available
+        if (cars[carIndex].status === 'available') {
+            alert(`This car (${cars[carIndex].brand} ${cars[carIndex].model}) is already available. No changes needed.`);
+            return;
+        }
         cars[carIndex].status = 'available';
         saveCars(cars);
     }

@@ -3,12 +3,11 @@ const CARS_STORAGE_KEY = 'driveeasy_cars';
 const BOOKINGS_STORAGE_KEY = 'driveeasy_bookings';
 const WALLET_STORAGE_KEY = 'driveeasy_wallet_balance'; // Unified key
 const TRANSACTIONS_STORAGE_KEY = 'driveeasy_transactions';
+const USER_DB_KEY = 'driveeasy_users';
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize wallet if not exists
-    initializeWallet();
-    
+    // Check if user is logged in
     // Check if user is logged in
     checkLoginStatus();
     
@@ -27,12 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Initialize wallet with default balance if not exists
-function initializeWallet() {
-    if (!localStorage.getItem(WALLET_STORAGE_KEY)) {
-        localStorage.setItem(WALLET_STORAGE_KEY, '1000.00');
-    }
-}
 
 // Check login status and update UI
 function checkLoginStatus() {
@@ -59,6 +52,15 @@ function checkLoginStatus() {
         if (userInfo) {
             userInfo.classList.remove('d-none');
         }
+
+        // Show Admin Dashboard button if user is an admin
+        const adminDashboardLink = document.getElementById('adminDashboardLink');
+        const userRole = localStorage.getItem('userRole');
+        
+        if (userRole === 'admin') {
+            document.body.classList.add('admin-mode');
+            if (adminDashboardLink) adminDashboardLink.style.display = 'block';
+        }
     } else {
         // User is not logged in, redirect to login
         const logoutBtn = document.getElementById('btnLogout');
@@ -72,27 +74,40 @@ function checkLoginStatus() {
     }
 }
 
-// Get wallet balance from localStorage
+// Get wallet balance from localStorage (PER USER)
 function getWalletBalance() {
-    const balance = localStorage.getItem(WALLET_STORAGE_KEY);
-    if (balance) {
-        return parseFloat(balance);
-    } else {
-        // Default wallet balance
-        const defaultBalance = 1000.00;
-        localStorage.setItem(WALLET_STORAGE_KEY, defaultBalance.toString());
-        return defaultBalance;
-    }
+    const userRole = localStorage.getItem('userRole');
+    if (userRole === 'admin') return 0.00; // Admins have no wallet
+
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return 0.00;
+
+    const users = JSON.parse(localStorage.getItem(USER_DB_KEY)) || [];
+    const user = users.find(u => u.email.toLowerCase() === userEmail.toLowerCase());
+    
+    return user ? parseFloat(user.walletBalance || 0) : 0.00;
 }
 
-// Update wallet balance in localStorage
+// Update wallet balance in localStorage (PER USER)
 function updateWalletBalance(newBalance) {
-    localStorage.setItem(WALLET_STORAGE_KEY, newBalance.toString());
-    syncWalletBalance();
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) return;
+
+    const users = JSON.parse(localStorage.getItem(USER_DB_KEY)) || [];
+    const userIndex = users.findIndex(u => u.email.toLowerCase() === userEmail.toLowerCase());
+    
+    if (userIndex !== -1) {
+        users[userIndex].walletBalance = newBalance;
+        localStorage.setItem(USER_DB_KEY, JSON.stringify(users));
+        syncWalletBalance();
+    }
 }
 
 // Sync wallet balance across all displays
 function syncWalletBalance() {
+    const userRole = localStorage.getItem('userRole');
+    if (userRole === 'admin') return; // Don't sync for admins
+
     const balance = getWalletBalance();
     
     // Update ALL possible wallet display elements
@@ -217,7 +232,12 @@ function processRecharge() {
         rechargeModal.hide();
     }
     
-    showSuccessMessage(`Successfully recharged ${amount.toFixed(2)} to your wallet! New balance: ${newBalance.toFixed(2)}`);
+    // Show success message
+    if (window.showToast) {
+        window.showToast(`Successfully added Br${amount.toFixed(2)} to your wallet!\nNew balance: Br${newBalance.toFixed(2)}`, 'wallet', 5000);
+    } else {
+        alert(`Successfully added ${amount.toFixed(2)} to your wallet!\nNew balance: ${newBalance.toFixed(2)}`);
+    }
     
     // Reset form
     document.getElementById('rechargeForm').reset();

@@ -2,6 +2,7 @@
 // User Database (using localStorage for persistence)
 const USER_DB_KEY = 'driveeasy_users';
 const ADMIN_CODE = 'ADMIN123!@#'; // Secret admin authorization code
+const WALLET_STORAGE_KEY = 'driveeasy_wallet_balance'; // Unified key for wallet
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -47,6 +48,7 @@ function initUserDatabase() {
                 password: "Admin@123", // Strong password
                 phoneNumber: "",
                 role: "admin",
+                walletBalance: 0.00,
                 createdAt: new Date().toISOString(),
                 isDefaultAdmin: true
             }
@@ -403,13 +405,14 @@ function handleSignup(event) {
         password: password, // In a real app, this should be hashed
         phoneNumber: phoneNumber,
         role: userRole,
+        walletBalance: 0.00, // Initialize balance to 0.0
         createdAt: new Date().toISOString(),
         isDefaultAdmin: false
     };
     
     // Save user to database
     saveUser(newUser);
-    
+
     // Show success message
     showSignupSuccess('Account created successfully! You can now log in with your credentials.');
     
@@ -601,7 +604,7 @@ function showPrivacyPolicy(event) {
 // Show terms of service (demo)
 function showTermsOfService(event) {
     event.preventDefault();
-    alert('Terms of Service: By using DriveEasy, you agree to our terms and conditions. Please drive safely and return vehicles on time.');
+    alert('Terms of Service: By using Car Rental Management System, you agree to our terms and conditions. Please drive safely and return vehicles on time.');
 }
 
 // Clear session data (for logout)

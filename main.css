@@ -734,3 +734,30 @@ footer p {
         font-size: 0.9rem;
     }
 }
+
+/* Admin Dashboard Link Styling */
+.admin-link {
+    color: #f59e0b !important; /* Warning/Gold color */
+    font-weight: 600;
+    border: 1px solid #f59e0b;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 5px 10px !important;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+    background-color: #f59e0b;
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Global Admin Mode Hiding */
+body.admin-mode .wallet-ui,
+body.admin-mode #rechargeModal,
+body.admin-mode [id*="rechargeWalletBtn"],
+body.admin-mode [id*="walletBalance"],
+body.admin-mode .wallet-badge {
+    display: none !important;
+}

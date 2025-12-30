@@ -3,6 +3,7 @@
 // Unified wallet storage key
 const WALLET_STORAGE_KEY = 'driveeasy_wallet_balance';
 const CARS_STORAGE_KEY = 'driveeasy_cars'; // Added for syncing with admin
+const USER_DB_KEY = 'driveeasy_users';
 
 // Default cars (used as fallback)
 const defaultCars = [
@@ -243,9 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Initialize wallet if not exists
-    initializeWallet();
-    
+    // Initialize cars data in localStorage if not exists
     // Initialize cars data in localStorage if not exists
     initializeCarsData();
     
@@ -265,12 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
 
-// Initialize wallet with default balance if not exists
-function initializeWallet() {
-    if (!localStorage.getItem(WALLET_STORAGE_KEY)) {
-        localStorage.setItem(WALLET_STORAGE_KEY, '1000.00');
-    }
-}
 
 // Initialize cars data in localStorage if not exists
 function initializeCarsData() {
@@ -279,15 +272,24 @@ function initializeCarsData() {
     }
 }
 
-// Load wallet balance from localStorage
+// Load wallet balance from localStorage (PER USER)
 function loadWalletBalance() {
-    const savedBalance = localStorage.getItem(WALLET_STORAGE_KEY);
-    if (savedBalance) {
-        window.walletBalance = parseFloat(savedBalance);
-    } else {
-        window.walletBalance = 1000.00;
-        localStorage.setItem(WALLET_STORAGE_KEY, window.walletBalance);
+    const userRole = localStorage.getItem('userRole');
+    if (userRole === 'admin') {
+        window.walletBalance = 0.00;
+        return;
     }
+
+    const userEmail = localStorage.getItem('userEmail');
+    if (!userEmail) {
+        window.walletBalance = 0.00;
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem(USER_DB_KEY)) || [];
+    const user = users.find(u => u.email.toLowerCase() === userEmail.toLowerCase());
+    
+    window.walletBalance = user ? parseFloat(user.walletBalance || 0) : 0.00;
 }
 
 // Update all wallet balance displays
@@ -492,9 +494,27 @@ function processRecharge() {
     // Simulate payment processing
     alert(`Processing ${rechargeAmount.toFixed(2)} payment via ${paymentMethod}...`);
     
-    // Add to wallet balance
+    // Add to wallet balance (PER USER)
+    const userEmail = localStorage.getItem('userEmail');
+    const userRole = localStorage.getItem('userRole');
+
+    if (userRole === 'admin') {
+        alert('Admins cannot have wallet balances.');
+        return;
+    }
+
+    if (!userEmail) return;
+
     window.walletBalance += rechargeAmount;
-    localStorage.setItem(WALLET_STORAGE_KEY, window.walletBalance);
+    
+    const users = JSON.parse(localStorage.getItem(USER_DB_KEY)) || [];
+    const userIndex = users.findIndex(u => u.email.toLowerCase() === userEmail.toLowerCase());
+    
+    if (userIndex !== -1) {
+        users[userIndex].walletBalance = window.walletBalance.toFixed(2);
+        localStorage.setItem(USER_DB_KEY, JSON.stringify(users));
+    }
+    
     updateAllWalletDisplays();
     
     // Close modal
@@ -506,19 +526,25 @@ function processRecharge() {
     paymentMethodSelect.value = '';
     
     // Show success message
-    alert(`Successfully added ${rechargeAmount.toFixed(2)} to your wallet!\nNew balance: ${window.walletBalance.toFixed(2)}`);
+    if (window.showToast) {
+        window.showToast(`Successfully added Br${rechargeAmount.toFixed(2)} to your wallet!\nNew balance: Br${window.walletBalance.toFixed(2)}`, 'wallet', 5000);
+    } else {
+        alert(`Successfully added ${rechargeAmount.toFixed(2)} to your wallet!\nNew balance: ${window.walletBalance.toFixed(2)}`);
+    }
 }
 
 // Check login status
 function checkLoginStatus() {
-    // Check if user is logged in (using localStorage for demo)
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userRole = localStorage.getItem('userRole');
     
-    if (!isLoggedIn) {
-        return false;
+    if (isLoggedIn && userRole === 'admin') {
+        document.body.classList.add('admin-mode');
+        const adminDashboardLink = document.getElementById('adminDashboardLink');
+        if (adminDashboardLink) adminDashboardLink.style.display = 'block';
     }
     
-    return true;
+    return isLoggedIn;
 }
 
 // Display current user information

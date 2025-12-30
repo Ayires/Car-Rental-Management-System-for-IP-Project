@@ -18,6 +18,7 @@
         if (type === 'success') icon = 'check-circle';
         if (type === 'error') icon = 'exclamation-circle';
         if (type === 'warning') icon = 'exclamation-triangle';
+        if (type === 'wallet') icon = 'wallet';
 
         toast.innerHTML = `
             <i class="fas fa-${icon}"></i>
