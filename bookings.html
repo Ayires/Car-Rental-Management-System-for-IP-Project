@@ -33,21 +33,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Home</a>
+                        <a class="nav-link" href="main.html" data-i18n="nav_home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cars.html">Available Cars</a>
+                        <a class="nav-link" href="cars.html" data-i18n="nav_cars">Available Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.html">Book Now</a>
+                        <a class="nav-link" href="booking.html" data-i18n="nav_book">Book Now</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="bookings.html">My Bookings</a>
+                        <a class="nav-link active" href="bookings.html" data-i18n="nav_bookings">My Bookings</a>
                     </li>
                     <!-- Admin Link -->
                     <li class="nav-item">
                         <a class="nav-link admin-link" href="admin.html" id="adminDashboardLink" style="display: none;">
-                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                            <i class="fas fa-user-shield me-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                         </a>
                     </li>
                     <!-- Wallet Display -->
@@ -66,7 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                         </button>
                     </li>
                 </ul>
@@ -81,9 +81,9 @@
             <div id="react-promo-root" class="mb-4"></div>
 
             <div class="d-flex justify-content-between align-items-center mb-5">
-                <h2 class="mb-0">My Bookings</h2>
+                <h2 class="mb-0" data-i18n="my_bookings_title">My Bookings</h2>
                 <a href="booking.html" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i>New Booking
+                    <i class="fas fa-plus me-2"></i><span data-i18n="my_bookings_new">New Booking</span>
                 </a>
             </div>
             
@@ -92,10 +92,10 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-wallet me-2"></i>
-                        <strong>Wallet Balance:</strong> Br<span id="walletBalance">500.00</span>
+                        <strong data-i18n="lbl_wallet_balance">Wallet Balance:</strong> Br<span id="walletBalance">500.00</span>
                     </div>
                     <button class="btn btn-outline-success" id="rechargeWalletBtnPage">
-                        <i class="fas fa-plus-circle me-1"></i>Recharge Wallet
+                        <i class="fas fa-plus-circle me-1"></i><span data-i18n="btn_recharge">Recharge Wallet</span>
                     </button>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 <div class="col-lg-12">
                     <div class="card shadow">
                         <div class="card-header bg-dark text-white">
-                            <h4 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Booking History</h4>
+                            <h4 class="mb-0"><i class="fas fa-clipboard-list me-2"></i><span data-i18n="my_bookings_history">Booking History</span></h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -112,14 +112,14 @@
                                     <thead>
                                         <tr>
                                             <th>Booking ID</th>
-                                            <th>Customer</th>
-                                            <th>Car</th>
-                                            <th>Period</th>
+                                            <th data-i18n="admin_tbl_customer">Customer</th>
+                                            <th data-i18n="admin_tbl_car">Car</th>
+                                            <th data-i18n="admin_tbl_period">Period</th>
                                             <th>Amount</th>
                                             <th>Special Requests</th>
-                                            <th>Payment Status</th>
-                                            <th>Rental Status</th>
-                                            <th>Action</th>
+                                            <th data-i18n="admin_tbl_payment">Payment Status</th>
+                                            <th data-i18n="admin_tbl_rental">Rental Status</th>
+                                            <th data-i18n="admin_tbl_actions">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="bookings-table">
@@ -140,10 +140,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5><i class="fas fa-car"></i> Car Rental Management System</h5>
-                    <p class="mb-0">Your trusted partner for car rentals.</p>
+                    <p class="mb-0" data-i18n="footer_partner">Your trusted partner for car rentals.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">&copy; 2025 Car Rental Management System. All rights reserved.</p>
+                    <p class="mb-0" data-i18n="footer_rights">&copy; 2025 Car Rental Management System. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -210,6 +210,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom JavaScript -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
     <script src="bookings.js"></script>
     
     <!-- React App -->

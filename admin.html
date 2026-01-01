@@ -34,16 +34,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#dashboard-section">Dashboard</a>
+                        <a class="nav-link active" href="#dashboard-section" data-i18n="admin_dash_title">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#manage-cars-section">Manage Cars</a>
+                        <a class="nav-link" href="#manage-cars-section" data-i18n="admin_manage_cars">Manage Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#manage-bookings-section">Manage Bookings</a>
+                        <a class="nav-link" href="#manage-bookings-section" data-i18n="admin_manage_bookings">Manage Bookings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Main Site</a>
+                        <a class="nav-link" href="main.html" data-i18n="nav_home">Main Site</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link user-info">
@@ -53,7 +53,7 @@
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                         </button>
                     </li>
                 </ul>
@@ -71,13 +71,13 @@
                 
                 <!-- Dashboard Section -->
                 <section id="dashboard-section" class="admin-section">
-                    <h2 class="mb-4"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h2>
+                    <h2 class="mb-4"><i class="fas fa-tachometer-alt me-2"></i><span data-i18n="admin_dash_title">Dashboard</span></h2>
                     <!-- Dashboard Stats -->
                     <div class="row mb-4">
                         <div class="col-md-3">
                             <div class="card bg-custom-blue mb-3">
                                 <div class="card-body">
-                                    <h6 class="card-subtitle mb-2">Total Cars</h6>
+                                    <h6 class="card-subtitle mb-2" data-i18n="admin_total_cars">Total Cars</h6>
                                     <h2 class="card-text fw-bold" id="total-cars">0</h2>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                         <div class="col-md-3">
                             <div class="card bg-custom-green mb-3">
                                 <div class="card-body">
-                                    <h6 class="card-subtitle mb-2">Available Cars</h6>
+                                    <h6 class="card-subtitle mb-2" data-i18n="admin_avail_cars">Available Cars</h6>
                                     <h2 class="card-text fw-bold" id="available-cars">0</h2>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                         <div class="col-md-3">
                             <div class="card bg-custom-cyan mb-3">
                                 <div class="card-body">
-                                    <h6 class="card-subtitle mb-2">Total Bookings</h6>
+                                    <h6 class="card-subtitle mb-2" data-i18n="admin_total_bookings">Total Bookings</h6>
                                     <h2 class="card-text fw-bold" id="total-bookings">0</h2>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                         <div class="col-md-3">
                             <div class="card bg-custom-orange mb-3">
                                 <div class="card-body">
-                                    <h6 class="card-subtitle mb-2">Active Bookings</h6>
+                                    <h6 class="card-subtitle mb-2" data-i18n="admin_active_bookings">Active Bookings</h6>
                                     <h2 class="card-text fw-bold" id="active-bookings">0</h2>
                                 </div>
                             </div>
@@ -111,16 +111,16 @@
                     <!-- Dashboard Car List -->
                     <div class="card shadow-sm mb-5">
                         <div class="card-header bg-white">
-                            <h5 class="mb-0"><i class="fas fa-list me-2"></i>Cars Inventory</h5>
+                            <h5 class="mb-0"><i class="fas fa-list me-2"></i><span data-i18n="admin_inventory">Cars Inventory</span></h5>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Car Name</th>
-                                            <th>Brand</th>
-                                            <th>Status</th>
+                                            <th data-i18n="admin_col_name">Car Name</th>
+                                            <th data-i18n="admin_col_brand">Brand</th>
+                                            <th data-i18n="admin_col_status">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dashboard-cars-list">
@@ -134,52 +134,52 @@
 
                 <!-- Manage Cars Section -->
                 <section id="manage-cars-section" class="admin-section d-none">
-                    <h2 class="mb-4"><i class="fas fa-car me-2"></i>Manage Cars</h2>
+                    <h2 class="mb-4"><i class="fas fa-car me-2"></i><span data-i18n="admin_manage_cars">Manage Cars</span></h2>
                     
                     <!-- Car Form -->
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h5 class="mb-0">Add/Edit Car</h5>
+                            <h5 class="mb-0" data-i18n="admin_add_edit_car">Add/Edit Car</h5>
                         </div>
                         <div class="card-body">
                             <form id="car-form">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="carModel" class="form-label">Car Model</label>
+                                        <label for="carModel" class="form-label" data-i18n="admin_car_model">Car Model</label>
                                         <input type="text" class="form-control" id="carModel" placeholder="Enter car model" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="carBrand" class="form-label">Brand</label>
+                                        <label for="carBrand" class="form-label" data-i18n="admin_col_brand">Brand</label>
                                         <input type="text" class="form-control" id="carBrand" placeholder="Enter brand" required>
                                     </div>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="carYear" class="form-label">Year</label>
+                                        <label for="carYear" class="form-label" data-i18n="admin_car_year">Year</label>
                                         <input type="number" class="form-control" id="carYear" min="2000" max="2025" placeholder="Enter year" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="carPrice" class="form-label">Price Per Day (Br)</label>
+                                        <label for="carPrice" class="form-label" data-i18n="admin_car_price">Price Per Day (Br)</label>
                                         <input type="number" class="form-control" id="carPrice" min="1" step="0.01" placeholder="Enter price per day" required>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label for="carImage" class="form-label">Image URL</label>
+                                    <label for="carImage" class="form-label" data-i18n="admin_car_image">Image URL</label>
                                     <input type="url" class="form-control" id="carImage" placeholder="Paste image URL here">
                                     <div class="form-text">Leave empty to use default car image</div>
                                 </div>
                                 
                                 <div class="d-flex gap-2">
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="fas fa-plus-circle me-1"></i>Add Car
+                                        <i class="fas fa-plus-circle me-1"></i><span data-i18n="admin_btn_add">Add Car</span>
                                     </button>
                                     <button type="button" class="btn btn-warning" id="update-car-btn" disabled>
-                                        <i class="fas fa-edit me-1"></i>Update Car
+                                        <i class="fas fa-edit me-1"></i><span data-i18n="admin_btn_update">Update Car</span>
                                     </button>
                                     <button type="button" class="btn btn-danger" id="delete-car-btn" disabled>
-                                        <i class="fas fa-trash me-1"></i>Delete Car
+                                        <i class="fas fa-trash me-1"></i><span data-i18n="admin_btn_delete">Delete Car</span>
                                     </button>
                                     <button type="button" class="btn btn-secondary" id="clear-form-btn">
                                         <i class="fas fa-times me-1"></i>Clear
@@ -192,12 +192,12 @@
                     <!-- Quick Status Update -->
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h5 class="mb-0">Quick Status Update</h5>
+                            <h5 class="mb-0" data-i18n="admin_quick_status">Quick Status Update</h5>
                         </div>
                         <div class="card-body">
                             <div class="row align-items-end">
                                 <div class="col-md-5 mb-3">
-                                    <label for="quick-car-select" class="form-label">Select a car to update:</label>
+                                    <label for="quick-car-select" class="form-label" data-i18n="admin_select_car">Select a car to update:</label>
                                     <select class="form-select" id="quick-car-select">
                                         <option value="">Select a car...</option>
                                     </select>
@@ -222,20 +222,20 @@
 
                 <!-- Manage Bookings Section -->
                 <section id="manage-bookings-section" class="admin-section d-none">
-                    <h2 class="mb-4"><i class="fas fa-calendar-check me-2"></i>Manage Bookings</h2>
+                    <h2 class="mb-4"><i class="fas fa-calendar-check me-2"></i><span data-i18n="admin_manage_bookings">Manage Bookings</span></h2>
                     
                     <!-- Quick Actions -->
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h5 class="mb-0">Quick Actions</h5>
+                            <h5 class="mb-0" data-i18n="admin_quick_actions">Quick Actions</h5>
                         </div>
                         <div class="card-body">
                             <div class="d-flex gap-2">
                                 <button type="button" class="btn btn-success" id="mark-returned-btn">
-                                    <i class="fas fa-check-circle me-1"></i>Mark as Returned
+                                    <i class="fas fa-check-circle me-1"></i><span data-i18n="admin_btn_return">Mark as Returned</span>
                                 </button>
                                 <button type="button" class="btn btn-danger" id="cancel-booking-btn">
-                                    <i class="fas fa-times-circle me-1"></i>Cancel Booking
+                                    <i class="fas fa-times-circle me-1"></i><span data-i18n="admin_btn_cancel">Cancel Booking</span>
                                 </button>
                             </div>
                         </div>
@@ -246,13 +246,13 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Customer</th>
-                                    <th>Email</th>
-                                    <th>Car</th>
-                                    <th>Period</th>
-                                    <th>Payment Status</th>
-                                    <th>Rental Status</th>
-                                    <th>Actions</th>
+                                    <th data-i18n="admin_tbl_customer">Customer</th>
+                                    <th data-i18n="admin_tbl_email">Email</th>
+                                    <th data-i18n="admin_tbl_car">Car</th>
+                                    <th data-i18n="admin_tbl_period">Period</th>
+                                    <th data-i18n="admin_tbl_payment">Payment Status</th>
+                                    <th data-i18n="admin_tbl_rental">Rental Status</th>
+                                    <th data-i18n="admin_tbl_actions">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="admin-bookings-table">
@@ -269,6 +269,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <!-- Admin JavaScript -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
     <script src="admin.js"></script>
 
     <!-- React App -->

@@ -35,16 +35,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="main.html">Home</a>
+                        <a class="nav-link active" href="main.html" data-i18n="nav_home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cars.html">Available Cars</a>
+                        <a class="nav-link" href="cars.html" data-i18n="nav_cars">Available Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.html">Book Now</a>
+                        <a class="nav-link" href="booking.html" data-i18n="nav_book">Book Now</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bookings.html">My Bookings</a>
+                        <a class="nav-link" href="bookings.html" data-i18n="nav_bookings">My Bookings</a>
                     </li>
                     <!-- Wallet Display -->
                     <li class="nav-item wallet-ui">
@@ -62,12 +62,12 @@
                     </li>
                     <li class="nav-item" id="adminDashboardLink" style="display: none;">
                         <a class="nav-link admin-link" href="admin.html">
-                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                            <i class="fas fa-user-shield me-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                         </button>
                     </li>
                 </ul>
@@ -80,17 +80,17 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Rent Your Perfect Car Today</h1>
-                    <p class="lead mb-4">Choose from a wide selection of vehicles at competitive prices. Whether for business or leisure, we have the right car for you.</p>
+                    <h1 class="display-4 fw-bold mb-4" data-i18n="hero_title">Rent Your Perfect Car Today</h1>
+                    <p class="lead mb-4" data-i18n="hero_subtitle">Choose from a wide selection of vehicles at competitive prices. Whether for business or leisure, we have the right car for you.</p>
                     <!-- Wallet Balance in Hero -->
                     <div class="alert alert-success d-inline-block wallet-ui">
                         <i class="fas fa-wallet me-2"></i>
-                        <strong>Wallet Balance:</strong> Br<span id="walletBalanceHero">500.00</span>
+                        <strong data-i18n="hero_wallet_balance">Wallet Balance:</strong> Br<span id="walletBalanceHero">500.00</span>
                     </div>
                     <div class="mt-3">
-                        <a href="cars.html" class="btn btn-primary btn-lg me-2">Browse Cars <i class="fas fa-arrow-right ms-2"></i></a>
+                        <a href="cars.html" class="btn btn-primary btn-lg me-2"><span data-i18n="hero_browse_btn">Browse Cars</span> <i class="fas fa-arrow-right ms-2"></i></a>
                         <button class="btn btn-success btn-lg wallet-ui" id="rechargeWalletBtnHero">
-                            <i class="fas fa-plus-circle me-2"></i>Recharge Wallet
+                            <i class="fas fa-plus-circle me-2"></i><span data-i18n="hero_recharge_btn">Recharge Wallet</span>
                         </button>
                     </div>
                 </div>
@@ -113,28 +113,28 @@
     <!-- Features Section -->
     <section id="features" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Why Choose Car Rental Management System?</h2>
+            <h2 class="text-center mb-5" data-i18n="features_title">Why Choose Car Rental Management System?</h2>
             <div class="row">
                 <div class="col-md-4 text-center mb-4">
                     <div class="feature-icon mb-3">
                         <i class="fas fa-car fa-3x text-primary"></i>
                     </div>
-                    <h4>Wide Selection</h4>
-                    <p class="text-muted">Choose from luxury sedans, SUVs, economy cars, and more.</p>
+                    <h4 data-i18n="feat_selection_title">Wide Selection</h4>
+                    <p class="text-muted" data-i18n="feat_selection_desc">Choose from luxury sedans, SUVs, economy cars, and more.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
                     <div class="feature-icon mb-3">
                         <i class="fas fa-tag fa-3x text-success"></i>
                     </div>
-                    <h4>Best Prices</h4>
-                    <p class="text-muted">Competitive rates with no hidden fees.</p>
+                    <h4 data-i18n="feat_prices_title">Best Prices</h4>
+                    <p class="text-muted" data-i18n="feat_prices_desc">Competitive rates with no hidden fees.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
                     <div class="feature-icon mb-3">
                         <i class="fas fa-shield-alt fa-3x text-warning"></i>
                     </div>
-                    <h4>Safe & Secure</h4>
-                    <p class="text-muted">All vehicles regularly maintained and insured.</p>
+                    <h4 data-i18n="feat_safe_title">Safe & Secure</h4>
+                    <p class="text-muted" data-i18n="feat_safe_desc">All vehicles regularly maintained and insured.</p>
                 </div>
             </div>
             <div class="row mt-4">
@@ -142,22 +142,22 @@
                     <div class="feature-icon mb-3">
                         <i class="fas fa-clock fa-3x text-info"></i>
                     </div>
-                    <h4>24/7 Support</h4>
-                    <p class="text-muted">Round-the-clock customer support for all your needs.</p>
+                    <h4 data-i18n="feat_support_title">24/7 Support</h4>
+                    <p class="text-muted" data-i18n="feat_support_desc">Round-the-clock customer support for all your needs.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4 cursor-pointer" id="locations-trigger" style="cursor: pointer;">
                     <div class="feature-icon mb-3">
                         <i class="fas fa-map-marker-alt fa-3x text-danger"></i>
                     </div>
-                    <h4>Multiple Locations</h4>
-                    <p class="text-muted">Click to view our pickup and drop-off locations across the city.</p>
+                    <h4 data-i18n="feat_locations_title">Multiple Locations</h4>
+                    <p class="text-muted" data-i18n="feat_locations_desc">Click to view our pickup and drop-off locations across the city.</p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
                     <div class="feature-icon mb-3">
                         <i class="fas fa-bolt fa-3x text-secondary"></i>
                     </div>
-                    <h4>Quick Booking</h4>
-                    <p class="text-muted">Book your car in minutes with our easy-to-use platform.</p>
+                    <h4 data-i18n="feat_quick_title">Quick Booking</h4>
+                    <p class="text-muted" data-i18n="feat_quick_desc">Book your car in minutes with our easy-to-use platform.</p>
                 </div>
             </div>
         </div>
@@ -169,10 +169,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5><i class="fas fa-car"></i> Car Rental Management System</h5>
-                    <p class="mb-0">Your trusted partner for car rentals.</p>
+                    <p class="mb-0" data-i18n="footer_partner">Your trusted partner for car rentals.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">&copy; 2025 Car Rental Management System. All rights reserved.</p>
+                    <p class="mb-0" data-i18n="footer_rights">&copy; 2025 Car Rental Management System. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -306,6 +306,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom JavaScript -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
     <script src="main.js"></script>
 
     <!-- React App -->

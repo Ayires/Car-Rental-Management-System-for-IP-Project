@@ -33,22 +33,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Home</a>
+                        <a class="nav-link" href="main.html" data-i18n="nav_home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cars.html">Available Cars</a>
+                        <a class="nav-link" href="cars.html" data-i18n="nav_cars">Available Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="booking.html">Book Now</a>
+                        <a class="nav-link active" href="booking.html" data-i18n="nav_book">Book Now</a>
                     </li>
                     <!-- Admin Link -->
                     <li class="nav-item">
                         <a class="nav-link admin-link" href="admin.html" id="adminDashboardLink" style="display: none;">
-                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                            <i class="fas fa-user-shield me-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bookings.html">My Bookings</a>
+                        <a class="nav-link" href="bookings.html" data-i18n="nav_bookings">My Bookings</a>
                     </li>
                     <!-- Wallet Badge moved to separate link -->
                     <li class="nav-item wallet-ui">
@@ -66,7 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                         </button>
                     </li>
                 </ul>
@@ -77,16 +77,16 @@
     <!-- Page Header -->
     <header class="bg-primary text-white py-5 mt-5">
         <div class="container text-center">
-            <h1>Book Your Ride</h1>
-            <p class="lead">Complete the form below to book your selected car.</p>
+            <h1 data-i18n="book_ride_title">Book Your Ride</h1>
+            <p class="lead" data-i18n="book_ride_subtitle">Complete the form below to book your selected car.</p>
             
             <div class="mt-3 wallet-ui">
                 <div class="alert alert-light d-inline-block py-2">
                     <i class="fas fa-wallet me-2 text-primary"></i>
-                    <strong class="text-primary">Wallet Balance:</strong> <span class="text-dark">Br<span id="walletBalance">0.00</span></span>
+                    <strong class="text-primary" data-i18n="lbl_wallet_balance">Wallet Balance:</strong> <span class="text-dark">Br<span id="walletBalance">0.00</span></span>
                 </div>
                 <button class="btn btn-outline-light ms-2" id="rechargeWalletBtnPage">
-                    <i class="fas fa-plus-circle me-1"></i>Recharge
+                    <i class="fas fa-plus-circle me-1"></i><span data-i18n="btn_recharge">Recharge</span>
                 </button>
             </div>
         </div>
@@ -105,53 +105,55 @@
                             <form id="booking-form">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="carSelect" class="form-label">Select Car</label>
+                                        <label for="carSelect" class="form-label" data-i18n="book_form_select_car">Select Car</label>
                                         <select class="form-select" id="carSelect" required>
-                                            <option value="">Choose a car...</option>
+                                            <option value="" data-i18n="book_form_choose">Choose a car...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="customerName" class="form-label">Full Name</label>
+                                        <label for="customerName" class="form-label" data-i18n="book_form_fullname">Full Name</label>
                                         <input type="text" class="form-control" id="customerName" placeholder="Enter your full name" required>
                                     </div>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="pickupDate" class="form-label">Pickup Date</label>
+                                        <label for="pickupDate" class="form-label" data-i18n="book_form_pickup">Pickup Date</label>
                                         <input type="date" class="form-control" id="pickupDate" required>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="returnDate" class="form-label">Return Date</label>
+                                        <label for="returnDate" class="form-label" data-i18n="book_form_return">Return Date</label>
                                         <input type="date" class="form-control" id="returnDate" required>
                                     </div>
                                 </div>
                                 
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerEmail" class="form-label">Email Address</label>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="customerEmail" class="form-label" data-i18n="book_form_email">Email Address</label>
                                         <input type="email" class="form-control" id="customerEmail" placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="customerPhone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="customerPhone" placeholder="Enter your phone number" required>
                                     </div>
                                 </div>
                                 
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Phone Number</label>
+                                    <!-- Container for potential errors or spacing, but script handles input wrapping -->
+                                    <div id="country-validator-container"></div> 
+                                    <input type="tel" class="form-control" id="customerPhone" placeholder="Enter phone" required>
+                                </div>
+                                
                                 <div class="mb-3">
-                                    <label for="specialRequests" class="form-label">Special Requests (Optional)</label>
-                                    <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requests?"></textarea>
+                                    <label for="specialRequests" class="form-label" data-i18n="book_form_req">Special Requests (Optional)</label>
+                                    <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requests?" data-i18n="book_form_req_ph"></textarea>
                                 </div>
                                 
                                 <!-- Updated info alert -->
                                 <div class="alert alert-info">
                                     <i class="fas fa-info-circle me-2"></i>
-                                    <strong>Payment Information:</strong> Payment will be required after booking confirmation. You can pay later from "My Bookings" page.
+                                    <strong data-i18n="book_payment_info">Payment Information:</strong> <span data-i18n="book_payment_desc">Payment will be required after booking confirmation. You can pay later from "My Bookings" page.</span>
                                 </div>
                                 
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary btn-lg">
-                                        <i class="fas fa-check-circle me-2"></i>Book Now
+                                        <i class="fas fa-check-circle me-2"></i><span data-i18n="book_btn_now">Book Now</span>
                                     </button>
                                 </div>
                             </form>
@@ -168,10 +170,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5><i class="fas fa-car"></i> Car Rental Management System</h5>
-                    <p class="mb-0">Your trusted partner for car rentals.</p>
+                    <p class="mb-0" data-i18n="footer_partner">Your trusted partner for car rentals.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">&copy; 2025 Car Rental Management System. All rights reserved.</p>
+                    <p class="mb-0" data-i18n="footer_rights">&copy; 2025 Car Rental Management System. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -236,7 +238,15 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
+    <script src="phone-handler.js"></script>
     <script src="booking.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             new PhoneHandler('customerPhone', 'country-validator-container');
+        });
+    </script>
     
     <!-- React App -->
     <script type="text/babel" src="react-app.js"></script>

@@ -33,22 +33,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Home</a>
+                        <a class="nav-link" href="main.html" data-i18n="nav_home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="cars.html">Available Cars</a>
+                        <a class="nav-link active" href="cars.html" data-i18n="nav_cars">Available Cars</a>
                     </li>
                     <!-- Admin Link -->
                     <li class="nav-item">
                         <a class="nav-link admin-link" href="admin.html" id="adminDashboardLink" style="display: none;">
-                            <i class="fas fa-user-shield me-1"></i> Admin Dashboard
+                            <i class="fas fa-user-shield me-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="booking.html">Book Now</a>
+                        <a class="nav-link" href="booking.html" data-i18n="nav_book">Book Now</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bookings.html">My Bookings</a>
+                        <a class="nav-link" href="bookings.html" data-i18n="nav_bookings">My Bookings</a>
                     </li>
                     <!-- Wallet Display -->
                     <li class="nav-item wallet-ui">
@@ -66,7 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <button id="btnLogout" class="btn btn-outline-light ms-2">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                         </button>
                     </li>
                 </ul>
@@ -78,9 +78,9 @@
     <section id="cars" class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-5">
-                <h2 class="mb-0">Available Cars for Rent</h2>
+                <h2 class="mb-0" data-i18n="cars_title">Available Cars for Rent</h2>
                 <a href="booking.html" class="btn btn-primary">
-                    <i class="fas fa-plus me-2"></i>Book a Car
+                    <i class="fas fa-plus me-2"></i><span data-i18n="cars_book_btn">Book a Car</span>
                 </a>
             </div>
             
@@ -89,10 +89,10 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <i class="fas fa-wallet me-2"></i>
-                        <strong>Wallet Balance:</strong> Br<span id="walletBalance">0.00</span>
+                        <strong data-i18n="lbl_wallet_balance">Wallet Balance:</strong> Br<span id="walletBalance">0.00</span>
                     </div>
                     <button class="btn btn-outline-success" id="rechargeWalletBtnPage">
-                        <i class="fas fa-plus-circle me-1"></i>Recharge Wallet
+                        <i class="fas fa-plus-circle me-1"></i><span data-i18n="btn_recharge">Recharge Wallet</span>
                     </button>
                 </div>
             </div>
@@ -112,10 +112,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h5><i class="fas fa-car"></i> Car Rental Management System</h5>
-                    <p class="mb-0">Your trusted partner for car rentals.</p>
+                    <p class="mb-0" data-i18n="footer_partner">Your trusted partner for car rentals.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">&copy; 2025 Car Rental Management System. All rights reserved.</p>
+                    <p class="mb-0" data-i18n="footer_rights">&copy; 2025 Car Rental Management System. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -182,6 +182,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom JavaScript -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
     <script src="cars.js"></script>
 
     <!-- React App -->
